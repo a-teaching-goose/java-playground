@@ -1,3 +1,5 @@
+import java.util.Stack;
+
 public class Main {
     public static void main(String[] args) {
         Node<Integer> head = new Node<>(1);
@@ -36,6 +38,21 @@ public class Main {
         }
 
         printList(head);
+
+        /*
+        print it in reverse order
+         */
+        Stack<Node<Integer>> stack = new Stack<>();
+        ptr = head;
+        while (ptr != null) {
+            stack.push(ptr);
+            ptr = ptr.next;
+        }
+
+        while (!stack.isEmpty()) {
+            Node<Integer> node = stack.pop();
+            System.out.println(node.val);
+        }
     }
 
     private static void printList(Node<Integer> ptr) {
