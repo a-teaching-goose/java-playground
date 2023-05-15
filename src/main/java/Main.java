@@ -1,3 +1,5 @@
+import java.util.Stack;
+
 public class Main {
     public static void main(String[] args) {
         printAnimalRecord(getVetRecordBST());
@@ -15,6 +17,8 @@ public class Main {
         } else {
             System.out.println("xyz not found.");
         }
+
+        printAnimalRecordWithoutRecursion(vetDB);
     }
 
     public static void printAnimalRecord(TreeNode<Animal> root) {
@@ -25,6 +29,27 @@ public class Main {
         printAnimalRecord(root.left);
         System.out.println(root);
         printAnimalRecord(root.right);
+    }
+
+    public static void printAnimalRecordWithoutRecursion(TreeNode<Animal> root) {
+        if (root == null) {
+            return;
+        }
+        Stack<TreeNode<Animal>> stack = new Stack<>();
+        stack.push(root);
+
+        while (!stack.isEmpty()) {
+            TreeNode<Animal> node = stack.pop();
+            System.out.println(node.val);
+
+            if (node.right != null) {
+                stack.push(node.right);
+            }
+
+            if (node.left != null) {
+                stack.push(node.left);
+            }
+        }
     }
 
     public static Animal searchAnimalRecord(TreeNode<Animal> vetDB, String targetName) {
