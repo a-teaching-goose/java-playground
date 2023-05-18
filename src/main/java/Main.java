@@ -8,11 +8,11 @@ public class Main {
         // specify the virtual cars to generate
         Map<EventType, Integer> specs = new HashMap<>() {{
             // event type, car amount to generate
-            put(EventType.Rallycross, 10);
-            put(EventType.StageRally, 10);
-            put(EventType.TimeAttack, 10);
-            put(EventType.TrackDay, 10);
-            put(EventType.Autocross, 10);
+            put(EventType.Rallycross, 20);
+            put(EventType.StageRally, 20);
+            put(EventType.TimeAttack, 20);
+            put(EventType.TrackDay, 20);
+            put(EventType.Autocross, 20);
         }};
 
         List<Car> virtualCars = generateVirtualCars(specs, knownModsDB);

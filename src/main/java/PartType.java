@@ -4,4 +4,5 @@ public enum PartType {
     Seat,
     Tire,
     Wheel,
+    UnderBodyProtection,
 }

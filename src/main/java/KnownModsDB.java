@@ -20,6 +20,7 @@ public class KnownModsDB {
             put(PartType.Seat, Arrays.asList("OEM", "Sparco"));
             put(PartType.BrakePad, Arrays.asList("Motocraft", "Hawk", "Stop Tech"));
             put(PartType.Wheel, Arrays.asList("Sport Edition", "LP Adventures", "Speedline", "OEM", "Enkei", "Team Dynamics"));
+            put(PartType.UnderBodyProtection, Arrays.asList("Primitive Skid Plate", "Custom"));
         }};
 
         Map<PartType, List<String>> autocrossMods = new HashMap<>() {{
@@ -28,6 +29,7 @@ public class KnownModsDB {
             put(PartType.Seat, Arrays.asList("Momo", "Sparco", "OEM", "NRG"));
             put(PartType.BrakePad, Arrays.asList("PowerStop", "OEM", "CarboTech", "EBC"));
             put(PartType.Wheel, Arrays.asList("WedsSport", "Apex", "Rays", "Optionlabs", "BBS"));
+            put(PartType.UnderBodyProtection, Arrays.asList("OEM"));
         }};
 
         Map<PartType, List<String>> trackDayMods = new HashMap<>() {{
@@ -36,6 +38,7 @@ public class KnownModsDB {
             put(PartType.Seat, Arrays.asList("OMP", "Sabelt", "Sparco circuit", "Corbeau", "NRG", "Kirkey", "OEM"));
             put(PartType.BrakePad, Arrays.asList("Porterfields ", "PowerStop", "CarboTech", "OEM", "G-LOC", "CarboTech", "Hawk"));
             put(PartType.Wheel, Arrays.asList("Jongbloed", "WedsSport", "BBS", "OEM", "Advanti", "Flyin' miata", "Konig"));
+            put(PartType.UnderBodyProtection, Arrays.asList("OEM"));
         }};
 
         Map<PartType, List<String>> timeAttackMods = new HashMap<>() {{
@@ -44,6 +47,7 @@ public class KnownModsDB {
             put(PartType.Seat, Arrays.asList("OMP"));
             put(PartType.BrakePad, Arrays.asList("CarboTech", "Hawk"));
             put(PartType.Wheel, Arrays.asList("Enkei", "Team Dynamics", "Titan 7"));
+            put(PartType.UnderBodyProtection, Arrays.asList("OEM"));
         }};
 
         Map<PartType, List<String>> stageRallyMods = new HashMap<>() {{
@@ -52,6 +56,7 @@ public class KnownModsDB {
             put(PartType.Seat, Arrays.asList("Cobra", "Recaro"));
             put(PartType.BrakePad, Arrays.asList("Wilwood", "Hawk"));
             put(PartType.Wheel, Arrays.asList("Revolution", "Team Dynamic"));
+            put(PartType.UnderBodyProtection, Arrays.asList("Primitive Skid Plate", "Custom"));
         }};
 
         knownMods = new HashMap<>() {{
