@@ -2,80 +2,50 @@ import java.util.Stack;
 
 public class Main {
     public static void main(String[] args) {
-        printAnimalRecord(getVetRecordBST());
 
-        TreeNode<Animal> vetDB = getVetRecordBST();
-
-        Animal record = searchAnimalRecord(vetDB, "Tommy");
-        if (record != null) {
-            System.out.println("Tommy is " + record.age + " years old.");
-        }
-
-        record = searchAnimalRecord(vetDB, "xyz");
-        if (record != null) {
-            System.out.println("xyz is " + record.age + " years old.");
-        } else {
-            System.out.println("xyz not found.");
-        }
-
-        printAnimalRecordWithoutRecursion(vetDB);
+        TreeNode<Integer> bst = getBinarySearchTree();
+        printTreeIterative(bst);
     }
 
-    public static void printAnimalRecord(TreeNode<Animal> root) {
+    public static void printTreeRecursive(TreeNode<Integer> root) {
         if (root == null) {
             return;
         }
-
-        printAnimalRecord(root.left);
+        printTreeRecursive(root.left);
         System.out.println(root);
-        printAnimalRecord(root.right);
+        printTreeRecursive(root.right);
     }
 
-    public static void printAnimalRecordWithoutRecursion(TreeNode<Animal> root) {
+    // non-recursive
+    public static void printTreeIterative(TreeNode<Integer> root) {
         if (root == null) {
             return;
         }
-        Stack<TreeNode<Animal>> stack = new Stack<>();
+
+        Stack<TreeNode<Integer>> stack = new Stack<>();
+
         stack.push(root);
-
         while (!stack.isEmpty()) {
-            TreeNode<Animal> node = stack.pop();
-            System.out.println(node.val);
+            TreeNode<Integer> node = stack.peek();
 
-            if (node.right != null) {
-                stack.push(node.right);
-            }
-
-            if (node.left != null) {
+            // go all the way to the left from node
+            // push every node onto the stack on the way
+            while (node.left != null) {
                 stack.push(node.left);
+                node = node.left;
+            }
+
+            // pop and print each node until a node has a right side
+            while (!stack.isEmpty()) {
+                node = stack.pop();
+                System.out.println(node.val);
+                // if a node has a right side, add it to the stack and start the outer loop all over
+                if (node.right != null) {
+                    stack.push(node.right);
+                    break;
+                }
             }
         }
-    }
-
-    public static Animal searchAnimalRecord(TreeNode<Animal> vetDB, String targetName) {
-        if (vetDB == null) {
-            return null;
-        }
-
-        Animal pet = vetDB.val;
-        if (pet.name.equals(targetName)) {
-            return pet;
-        }
-
-        if (targetName.compareTo(pet.name) < 0) {
-            return searchAnimalRecord(vetDB.left, targetName);
-        }
-        return searchAnimalRecord(vetDB.right, targetName);
-    }
-
-    public static void printTree(TreeNode<Integer> root) {
-        if (root == null) {
-            return;
-        }
-        // use recursion
-        printTree(root.left);
-        System.out.println(root);
-        printTree(root.right);
     }
 
     //      1
@@ -83,7 +53,7 @@ public class Main {
     //    2   3
     //   / \   \
     //  4   5   6
-    public static TreeNode<Integer> getFancyTree() {
+    public static TreeNode<Integer> getGenericTree() {
         // 1st level
         TreeNode<Integer> root = new TreeNode<>(1);
 
@@ -99,11 +69,11 @@ public class Main {
         return root;
     }
 
-    //      6
-    //     / \
-    //    3   8
-    //   / \   \
-    //  1   4   9
+    //         6
+    //      /    \
+    //    3       8
+    //   / \     /  \
+    //  1   4    7   9
     public static TreeNode<Integer> getBinarySearchTree() {
         // 1st level
         TreeNode<Integer> root = new TreeNode<>(6);
@@ -116,34 +86,7 @@ public class Main {
         root.left.left = new TreeNode<>(1);
         root.left.right = new TreeNode<>(4);
         root.right.right = new TreeNode<>(9);
-
-        return root;
-    }
-
-    public static TreeNode<Animal> getVetRecordBST() {
-       /*
-       create a binary search tree based on pet's name (alphabetically)
-
-                     Natalie (cat)  // root of a tree
-                    /              \
-             David (dog)            Tommy (cat)
-              /      \               /        \
-    Alex (cat)   Emma (dog)    Sally (dog)   Whisky(dog)
-
-        */
-        // 1st level (root)
-        TreeNode<Animal> root = new TreeNode<>(new Cat("Natalie", "male", 3));
-
-        // 2nd level
-        root.left = new TreeNode<>(new Dog("David", "male", 12, "Peng"));
-        root.right = new TreeNode<>(new Cat("Tommy", "male", 5));
-
-        // 3rd level
-        root.left.left = new TreeNode<>(new Cat("Alex", "male", 2));
-        root.left.right = new TreeNode<>(new Dog("Emma", "female", 8, "Seattle Humane"));
-
-        root.right.left = new TreeNode<>(new Dog("Sally", "female", 4, "Peng"));
-        root.right.right = new TreeNode<>(new Dog("Whisky", "male", 1, "Seattle Humane"));
+        root.right.left = new TreeNode<>(7);
 
         return root;
     }
